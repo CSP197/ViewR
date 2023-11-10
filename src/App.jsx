@@ -79,7 +79,7 @@ function App() {
       console.log(`Line 77) ${activeIndex}`);
       return () => clearInterval(interval);
     }
-  }); // [sliding, activeIndex, catalogs]
+  });
 
   return (
     <>
