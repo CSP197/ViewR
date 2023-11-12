@@ -2,7 +2,7 @@ import React from "react";
 import { up_arrow } from "../assets/index";
 
 interface CarouselProps {
-  imageList: {
+  imageArr: {
     thumb: any;
     image: any;
   }[];
@@ -13,7 +13,7 @@ interface CarouselProps {
 const Carousel = (props: CarouselProps) => {
   return (
     <div className="flex justify-center space-x-4 pb-5 sm:p-5">
-      {props.imageList.map((image: any, idx: number) => (
+      {props.imageArr.map((image: any, idx: number) => (
         <div key={"div_" + idx} className="grid flex-col">
           <img
             key={"img_" + idx}

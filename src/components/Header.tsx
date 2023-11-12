@@ -11,6 +11,7 @@ interface HeaderProps {
   nextClickFunc: () => void;
   slideShowFunc: () => void;
   isSliding: boolean;
+  keyboardFunc: (event: any) => void;
 }
 
 function Header(props: HeaderProps) {
@@ -22,6 +23,7 @@ function Header(props: HeaderProps) {
     // slidingClassName =
     //   "inline-flex items-center rounded-md bg-violet-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-violet-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600";
   }
+
 
   return (
     <div className="p-10 lg:flex lg:items-center lg:justify-between">
@@ -49,6 +51,8 @@ function Header(props: HeaderProps) {
             className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             // onClick={() => setTimeout(props.prevClickFunc, 510)}
             onClick={props.prevClickFunc}
+            onKeyDown={props.keyboardFunc}
+            tabIndex={0}
           >
             <ArrowLeftCircleIcon
               className="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400"
@@ -63,6 +67,8 @@ function Header(props: HeaderProps) {
             className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             // onClick={() => setTimeout(props.nextClickFunc, 510)}
             onClick={props.nextClickFunc}
+            onKeyDown={props.keyboardFunc}
+            tabIndex={0}
           >
             <ArrowRightCircleIcon
               className="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400"

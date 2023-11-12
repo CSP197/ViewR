@@ -9,7 +9,7 @@ interface SlideProps {
 
 const Slide = (props: SlideProps) => {
   return (
-    <div className="flex justify-center">
+    <div className="flex-1 justify-center">
       {/* <Transition
         as={React.Fragment}
         show={props.transition}
@@ -17,10 +17,10 @@ const Slide = (props: SlideProps) => {
         enterFrom={"opacity-0 translate-x-" + props.isLeft ? "0" : "12"}
         enterTo={"opacity-100 -translate-x-" + props.isLeft ? "12" : "0"}
       > */}
-        <img
-          className="h-auto max-w-full rounded-lg mx-auto object-scale-down max-h-96"
-          src={props.catalogImage}
-        />
+      <img
+        className="h-auto max-w-full rounded-lg mx-auto object-scale-down max-h-96"
+        src={props.catalogImage}
+      />
       {/* </Transition> */}
     </div>
   );

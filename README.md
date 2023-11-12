@@ -11,3 +11,5 @@
 4. Click on the individual images on the carousel to view as needed
 
 ##### All images are sourced from `unsplash.com`
+
+TODO: integrate with unsplash api to get random images
