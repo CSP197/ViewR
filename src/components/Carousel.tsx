@@ -12,29 +12,27 @@ interface CarouselProps {
 
 const Carousel = (props: CarouselProps) => {
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify-center no-wrap overflow-x-scroll space-x-4">
       {/*pb-5 sm:p-5 */}
-      <div className="flex no-wrap overflow-x-scroll space-x-4">
-        {props.imageArr.map((image: any, idx: number) => (
-          <div key={"div_" + idx} className="grid flex-col">
+      {props.imageArr.map((image: any, idx: number) => (
+        <div key={"div_" + idx} className="grid flex-col">
+          <img
+            key={"img_" + idx}
+            className="rounded-lg object-scale-down max-h-20"
+            src={image.thumb}
+            onClick={() => props.thumbnailClickFunc(idx)}
+          />
+          {idx === props.activeIndex ? (
             <img
-              key={"img_" + idx}
-              className="rounded-lg object-scale-down max-h-20"
-              src={image.thumb}
-              onClick={() => props.thumbnailClickFunc(idx)}
+              key={"arrow_" + idx}
+              src={up_arrow}
+              className="justify-self-center object-scale-down max-h-3"
             />
-            {idx === props.activeIndex ? (
-              <img
-                key={"arrow_" + idx}
-                src={up_arrow}
-                className="justify-self-center object-scale-down max-h-3"
-              />
-            ) : (
-              <></>
-            )}
-          </div>
-        ))}
-      </div>
+          ) : (
+            <></>
+          )}
+        </div>
+      ))}
     </div>
   );
 };
