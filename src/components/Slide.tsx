@@ -9,7 +9,7 @@ interface SlideProps {
 
 const Slide = (props: SlideProps) => {
   return (
-    <div className="flex-1 justify-center">
+    <>
       {/* <Transition
         as={React.Fragment}
         show={props.transition}
@@ -22,7 +22,7 @@ const Slide = (props: SlideProps) => {
         src={props.catalogImage}
       />
       {/* </Transition> */}
-    </div>
+    </>
   );
 };
 

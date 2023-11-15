@@ -5,18 +5,18 @@ import Slide from "./components/Slide";
 import { image1 } from "./assets/index";
 import Carousel from "./components/Carousel";
 import ImageService from "./components/ImageService";
+import ImageData from "./components/ImageData";
 
 function App() {
   const imageList = [
     {
       thumb: image1,
       image: image1,
-      info: [
-        "Sutirta Budiman",
-        "https://unsplash.com/photos/group-of-zebra-walking-on-wheat-field-Jgiv1rSIpVM",
-        "4836",
-        "3869",
-      ],
+      metadata: {
+        name: "Sutirta Budiman",
+        url: "https://unsplash.com/photos/group-of-zebra-walking-on-wheat-field-Jgiv1rSIpVM",
+        dimensions: ["4836", "3869"], // height x width
+      },
     },
     // {
     //   thumb: image2,
@@ -99,7 +99,11 @@ function App() {
             newState.push({
               thumb: obj.download_url,
               image: obj.download_url,
-              info: [obj.author, obj.url, obj.height, obj.width],
+              metadata: {
+                name: obj.author,
+                url: obj.url,
+                dimensions: [obj.height, obj.width],
+              },
             })
           );
           setImages(newState);
@@ -136,12 +140,7 @@ function App() {
         // transition={transition}
         // isLeft={isLeft}
       />
-      {images[activeIndex].info !== null &&
-        images[activeIndex].info.map((item, index) => (
-          <div className="text-center" key={index}>
-            {item}
-          </div>
-        ))}
+      <ImageData data={images[activeIndex].metadata} />
       <Carousel
         imageArr={images}
         activeIndex={activeIndex}

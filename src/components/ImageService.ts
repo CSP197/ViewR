@@ -1,23 +1,5 @@
 import axios from "axios";
-import React from "react";
-
-interface ImageServiceProps { }
-
-// const ImageService = (props: ImageServiceProps) => {
-//   const list_arr = getPics();
-
-//   return (
-//     <div>
-//       {list_arr.map((img: any, idx: number) => {
-//         <img key={idx} src={img.download_url} />;
-//       })}
-//     </div>
-//   );
-// };
-
-function getRandomInt(max:number) {
-  return Math.floor(Math.random() * max);
-}
+import getRandomInt from '../utils/GetRandomInt';
 
 async function ImageService() {
   const res = await axios({
