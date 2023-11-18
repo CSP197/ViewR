@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Slide from "./components/Slide";
 // import { useTimeoutFn } from "react-use";
-import { image1 } from "./assets/index";
+import { image1, image2, 
+  image3, 
+  image4, 
+  image5 
+} from "./assets/index";
 import Carousel from "./components/Carousel";
 import ImageService from "./components/ImageService";
 import ImageData from "./components/ImageData";
@@ -13,31 +17,54 @@ function App() {
       thumb: image1,
       image: image1,
       metadata: {
-        name: "Sutirta Budiman",
-        url: "https://unsplash.com/photos/group-of-zebra-walking-on-wheat-field-Jgiv1rSIpVM",
-        dimensions: ["4836", "3869"], // height x width
+        name: "Jeffrey Deng",
+        url: "https://unsplash.com/photos/h6t2dbYgDuc",
+        height: 3872,
+        width: 2592,
+        // Photo by <a href="https://unsplash.com/@jeffreydeng?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeffrey Deng</a> on <a href="https://unsplash.com/photos/sliced-strawberry-in-mug-with-flakes-h6t2dbYgDuc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a> 
       },
     },
-    // {
-    //   thumb: image2,
-    //   image: image2,
-    //   info: null,
-    // },
-    // {
-    //   thumb: image3,
-    //   image: image3,
-    //   info: null,
-    // },
-    // {
-    //   thumb: image4,
-    //   image: image4,
-    //   info: null,
-    // },
-    // {
-    //   thumb: image5,
-    //   image: image5,
-    //   info: null,
-    // },
+    {
+      thumb: image2,
+      image: image2,
+      metadata: {
+        name: "davide ragusa",
+        url: "https://unsplash.com/photos/mOPCiXScx08",
+        height: 2848,
+        width: 4288,
+  
+      },
+    },
+    {
+      thumb: image3,
+      image: image3,
+      metadata: {
+        name: "Nithya Ramanujam",
+        url: "https://unsplash.com/photos/fTKetYpEKNQ",
+        height: 805,
+        width: 1280
+      },
+    },
+    {
+      thumb: image4,
+      image: image4,
+      metadata: {
+        name: "Rafael Leão",
+        url: "https://unsplash.com/photos/PW0-vZD0wis",
+        height: 2848,
+        width: 4288
+      },
+    },
+    {
+      thumb: image5,
+      image: image5,
+      metadata: {
+        name: "Roksolana Zasiadko",
+        url: "https://unsplash.com/photos/LyeduBb2Auk",
+        height: 4272,
+        width: 2848
+      },
+    },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -102,7 +129,8 @@ function App() {
               metadata: {
                 name: obj.author,
                 url: obj.url,
-                dimensions: [obj.height, obj.width],
+                height: obj.height,
+                width: obj.width,
               },
             })
           );
@@ -137,6 +165,7 @@ function App() {
       />
       <Slide
         catalogImage={images[activeIndex].image}
+        metadata={images[activeIndex].metadata}
         // transition={transition}
         // isLeft={isLeft}
       />

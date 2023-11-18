@@ -41,11 +41,32 @@ function Header(props: HeaderProps) {
             </span>
           </h1>
         </Transition>
-        <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6"></div>
+        {/* <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6"></div> */}
       </div>
+
+
+<div id="toast-default" className="flex w-1/2 mx-auto text-center border max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+    <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:bg-blue-800 dark:text-blue-200">
+        <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.147 15.085a7.159 7.159 0 0 1-6.189 3.307A6.713 6.713 0 0 1 3.1 15.444c-2.679-4.513.287-8.737.888-9.548A4.373 4.373 0 0 0 5 1.608c1.287.953 6.445 3.218 5.537 10.5 1.5-1.122 2.706-3.01 2.853-6.14 1.433 1.049 3.993 5.395 1.757 9.117Z"/>
+        </svg>
+        <span className="sr-only">Fire icon</span>
+    </div>
+    <div className="ms-3 text-sm font-normal">Set yourself free.</div>
+    <button type="button" className="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-default" aria-label="Close">
+        <span className="sr-only">Close</span>
+        <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+        </svg>
+    </button>
+</div>
+
+
       <div className="mt-5 flex lg:ml-4 lg:mt-0">
         <span className="sm:block">
           <button
+            // data-tooltip-target="prev-image-tooltip"
+            // data-popover-placement="bottom"
             type="button"
             className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             // onClick={() => setTimeout(props.prevClickFunc, 510)}
@@ -59,9 +80,35 @@ function Header(props: HeaderProps) {
             />
             Prev Image
           </button>
+          {/* <div
+            id="prev-image-tooltip"
+            role="tooltip"
+            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-400 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-500"
+          >
+            Press{" "}
+            <kbd className="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
+              Tab
+            </kbd>{" "}
+            once to use{" "}
+            <kbd className="rtl:rotate-180 inline-flex items-center px-2 py-1.5 text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
+              <svg
+                className="w-2.5 h-2.5"
+                // aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 10 16"
+              >
+                <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z" />
+              </svg>
+              <span className="sr-only">left Arrow key</span>
+            </kbd>{" "}
+            on your keyboard to see the previous image
+          </div> */}
         </span>
         <span className="ml-3 sm:block">
           <button
+            // data-tooltip-target="next-image-tooltip"
+            // data-tooltip-placement="top"
             type="button"
             className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             // onClick={() => setTimeout(props.nextClickFunc, 510)}
@@ -75,9 +122,36 @@ function Header(props: HeaderProps) {
             />
             Next Image
           </button>
+          {/* <div
+            id="next-image-tooltip"
+            role="tooltip"
+            // className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-400 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-500"
+            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-400 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-500"
+          >
+            Press{" "}
+            <kbd className="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
+              Tab
+            </kbd>{" "}
+            once to use{" "}
+            <kbd className="rtl:rotate-180 inline-flex items-center px-2 py-1.5 text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
+              <svg
+                className="w-2.5 h-2.5"
+                // aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 10 16"
+              >
+                <path d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z" />
+              </svg>
+              <span className="sr-only">Arrow key right</span>
+            </kbd>{" "}
+            on your keyboard to see the next image
+          </div> */}
         </span>
         <span className="sm:ml-3">
           <button
+            // data-popover-target="slideshow-tooltip"
+            // data-popover-placement="bottom"
             type="button"
             // className={slidingClassName}
             className={
@@ -94,6 +168,14 @@ function Header(props: HeaderProps) {
             <PhotoIcon className="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" />
             {props.isSliding ? "Stop" : "Start"} Slideshow
           </button>
+
+          {/* <div
+            id="slideshow-tooltip"
+            role="tooltip"
+            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-400 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-500"
+          >
+            Click to start a slideshow :)
+          </div> */}
         </span>
       </div>
     </div>

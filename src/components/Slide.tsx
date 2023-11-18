@@ -3,6 +3,12 @@ import React from "react";
 
 interface SlideProps {
   catalogImage: any;
+  metadata: {
+    name: string;
+    url: string;
+    height: number;
+    width: number;
+  };
   // transition: boolean;
   // isLeft: boolean;
 }
@@ -20,7 +26,18 @@ const Slide = (props: SlideProps) => {
       <img
         className="h-auto max-w-full rounded-lg mx-auto object-scale-down max-h-96"
         src={props.catalogImage}
+        data-tooltip-target="metadata-tooltip"
+        data-tooltip-placement="right"
       />
+      <div
+        id="metadata-tooltip"
+        role="tooltip"
+        className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+      >
+        {"Height: " + props.metadata.height + " px"}
+        <br />
+        {"Width: " + props.metadata.width + " px"}
+      </div>
       {/* </Transition> */}
     </>
   );
