@@ -1,5 +1,6 @@
 import React from "react";
 import { up_arrow } from "../assets/index";
+import { Tooltip } from "react-tooltip";
 
 interface CarouselProps {
   imageArr: {
@@ -23,8 +24,14 @@ const Carousel = (props: CarouselProps) => {
       {props.imageArr.map((image: any, idx: number) => (
         <div key={"div_" + idx} className="grid flex-col">
           <img
-            data-tooltip-target="carousel-tooltip"
-            data-tooltip-placement="bottom"
+            //
+            data-tooltip-id="carousel-tooltip"
+            data-tooltip-content={idx.toString()}
+            data-img-artist-name={image.metadata.name}
+            data-tooltip-place="bottom"
+            //
+            // data-tooltip-target="carousel-tooltip"
+            // data-tooltip-placement="bottom"
             key={"img_" + idx}
             className="cursor-pointer-hover rounded-lg object-scale-down max-h-20"
             src={image.thumb}
@@ -39,17 +46,31 @@ const Carousel = (props: CarouselProps) => {
           ) : (
             <></>
           )}
-          <div
-            id="carousel-tooltip"
-            role="tooltip"
-            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-          >
-            {"Click here to view " +
-              props.imageArr[idx].metadata.name +
-              "'s image"}
-          </div>
         </div>
       ))}
+      {/* Tooltip def */}
+      {/* <div
+        id="carousel-tooltip"
+        role="tooltip"
+        className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+      >
+        {"Click here to view " +
+          props.imageArr[props.activeIndex].metadata.name +
+          "'s image"}
+      </div> */}
+      <Tooltip
+        id="carousel-tooltip"
+        arrowColor="transparent"
+        render={({ activeAnchor }) => (
+          <span
+          // className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+          >
+            Click here to view{" "}
+            {activeAnchor?.getAttribute("data-img-artist-name") || "this dude"}
+            's photo
+          </span>
+        )}
+      />
     </div>
   );
 };
