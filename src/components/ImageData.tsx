@@ -6,10 +6,13 @@ interface ImageDataProps {
 
 // Copied from https://stackoverflow.com/a/63627688
 const openInNewTab = (url: string): void => {
-  const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
-  if (newWindow) newWindow.opener = null
-}
-const onClickUrl = (url: string): (() => void) => () => openInNewTab(url)
+  const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+  if (newWindow) newWindow.opener = null;
+};
+const onClickUrl =
+  (url: string): (() => void) =>
+  () =>
+    openInNewTab(url);
 
 const ImageData = (props: ImageDataProps) => {
   return (

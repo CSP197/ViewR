@@ -2,11 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Slide from "./components/Slide";
 // import { useTimeoutFn } from "react-use";
-import { image1, image2, 
-  image3, 
-  image4, 
-  image5 
-} from "./assets/index";
+import { image1, image2, image3, image4, image5 } from "./assets/index";
 import Carousel from "./components/Carousel";
 import ImageService from "./components/ImageService";
 import ImageData from "./components/ImageData";
@@ -21,7 +17,7 @@ function App() {
         url: "https://unsplash.com/photos/h6t2dbYgDuc",
         height: 3872,
         width: 2592,
-        // Photo by <a href="https://unsplash.com/@jeffreydeng?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeffrey Deng</a> on <a href="https://unsplash.com/photos/sliced-strawberry-in-mug-with-flakes-h6t2dbYgDuc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a> 
+        // Photo by <a href="https://unsplash.com/@jeffreydeng?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeffrey Deng</a> on <a href="https://unsplash.com/photos/sliced-strawberry-in-mug-with-flakes-h6t2dbYgDuc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
       },
     },
     {
@@ -32,7 +28,6 @@ function App() {
         url: "https://unsplash.com/photos/mOPCiXScx08",
         height: 2848,
         width: 4288,
-  
       },
     },
     {
@@ -42,7 +37,7 @@ function App() {
         name: "Nithya Ramanujam",
         url: "https://unsplash.com/photos/fTKetYpEKNQ",
         height: 805,
-        width: 1280
+        width: 1280,
       },
     },
     {
@@ -52,7 +47,7 @@ function App() {
         name: "Rafael Leão",
         url: "https://unsplash.com/photos/PW0-vZD0wis",
         height: 2848,
-        width: 4288
+        width: 4288,
       },
     },
     {
@@ -62,7 +57,7 @@ function App() {
         name: "Roksolana Zasiadko",
         url: "https://unsplash.com/photos/LyeduBb2Auk",
         height: 4272,
-        width: 2848
+        width: 2848,
       },
     },
   ];
@@ -113,32 +108,36 @@ function App() {
     if (sliding) {
       const interval = setInterval(() => {
         nextClick();
-        console.log(`Line 75) ${activeIndex}`);
+        // console.log(`Line 75) ${activeIndex}`);
       }, slideDuration);
-      console.log(`Line 77) ${activeIndex}`);
+      // console.log(`Line 77) ${activeIndex}`);
       return () => clearInterval(interval);
     }
     if (images.length === 0 || activeIndex === images.length - 1) {
-      ImageService()
-        .then((res) => {
-          let newState = images;
-          res.map((obj) =>
-            newState.push({
-              thumb: obj.download_url,
-              image: obj.download_url,
-              metadata: {
-                name: obj.author,
-                url: obj.url,
-                height: obj.height,
-                width: obj.width,
-              },
-            })
-          );
-          setImages(newState);
-        })
-        .catch((err) => console.log(err));
+      fetchNewImages();
     }
   });
+
+  function fetchNewImages() {
+    ImageService()
+      .then((res) => {
+        let newState = images;
+        res.map((obj) =>
+          newState.push({
+            thumb: obj.download_url,
+            image: obj.download_url,
+            metadata: {
+              name: obj.author,
+              url: obj.url,
+              height: obj.height,
+              width: obj.width,
+            },
+          })
+        );
+        setImages(newState);
+      })
+      .catch((err) => console.log(err));
+  }
 
   function handleKeyDown(event) {
     if (event.key === "ArrowRight") {
