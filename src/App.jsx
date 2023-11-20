@@ -2,37 +2,42 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Slide from "./components/Slide";
 // import { useTimeoutFn } from "react-use";
-import { image1, image2, image3, image4, image5 } from "./assets/index";
+// import // image1,
+// // image2,
+// // image3,
+// // image4,
+// // image5,
+// "./assets/index";
 import Carousel from "./components/Carousel";
 import ImageService from "./components/ImageService";
 import ImageData from "./components/ImageData";
+import randomIntFromInterval from "./utils/RandomInt";
 
 function App() {
   const imageList = [
     {
-      thumb: image1,
-      image: image1,
+      thumb: "https://picsum.photos/id/351/3994/2443",
+      image: "https://picsum.photos/id/351/3994/2443",
       metadata: {
-        name: "Jeffrey Deng",
-        url: "https://unsplash.com/photos/h6t2dbYgDuc",
-        height: 3872,
-        width: 2592,
-        // Photo by <a href="https://unsplash.com/@jeffreydeng?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeffrey Deng</a> on <a href="https://unsplash.com/photos/sliced-strawberry-in-mug-with-flakes-h6t2dbYgDuc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+        name: "Rafael Fabricio",
+        url: "https://unsplash.com/photos/nKRVmvjW3rE",
+        height: 2443,
+        width: 3994,
       },
     },
     {
-      thumb: image2,
-      image: image2,
+      thumb: "https://picsum.photos/id/604/2511/1671",
+      image: "https://picsum.photos/id/604/2511/1671",
       metadata: {
-        name: "davide ragusa",
-        url: "https://unsplash.com/photos/mOPCiXScx08",
-        height: 2848,
-        width: 4288,
+        name: "Chelsea Francis",
+        url: "https://unsplash.com/photos/xVHr4B1WApk",
+        height: 1671,
+        width: 2511,
       },
     },
     {
-      thumb: image3,
-      image: image3,
+      thumb: "https://picsum.photos/id/41/1280/805",
+      image: "https://picsum.photos/id/41/1280/805",
       metadata: {
         name: "Nithya Ramanujam",
         url: "https://unsplash.com/photos/fTKetYpEKNQ",
@@ -41,29 +46,80 @@ function App() {
       },
     },
     {
-      thumb: image4,
-      image: image4,
+      thumb: "https://picsum.photos/id/598/2365/1774",
+      image: "https://picsum.photos/id/598/2365/1774",
       metadata: {
-        name: "Rafael Leão",
-        url: "https://unsplash.com/photos/PW0-vZD0wis",
+        name: "Pawel Kadysz",
+        url: "https://unsplash.com/photos/5DdcKr2pxos",
+        height: 2365,
+        width: 1774,
+      },
+    },
+    {
+      thumb: "https://picsum.photos/id/758/3333/5000",
+      image: "https://picsum.photos/id/758/3333/5000",
+      metadata: {
+        name: "Eli DeFaria",
+        url: "https://unsplash.com/photos/IN6KPUe8j04",
+        height: 5000,
+        width: 3333,
+      },
+    },
+    {
+      thumb: "https://picsum.photos/id/244/4288/2848",
+      image: "https://picsum.photos/id/244/4288/2848",
+      metadata: {
+        name: "Yair Hazout",
+        url: "https://unsplash.com/photos/Y-eIZ3g8_ko",
         height: 2848,
         width: 4288,
       },
     },
     {
-      thumb: image5,
-      image: image5,
+      thumb: "https://picsum.photos/id/53/1280/1280",
+      image: "https://picsum.photos/id/53/1280/1280",
       metadata: {
-        name: "Roksolana Zasiadko",
-        url: "https://unsplash.com/photos/LyeduBb2Auk",
-        height: 4272,
-        width: 2848,
+        name: "J Duclos",
+        url: "https://unsplash.com/photos/6qORI5j_6n8",
+        height: 1280,
+        width: 1280,
+      },
+    },
+    {
+      thumb: "https://picsum.photos/id/278/5000/3333",
+      image: "https://picsum.photos/id/278/5000/3333",
+      metadata: {
+        name: "Taylor Leopold",
+        url: "https://unsplash.com/photos/6QQqqvq4R9A",
+        height: 3333,
+        width: 5000,
+      },
+    },
+    {
+      thumb: "https://picsum.photos/id/118/1500/1000",
+      image: "https://picsum.photos/id/118/1500/1000",
+      metadata: {
+        name: "Rick Waalders",
+        url: "https://unsplash.com/photos/d-Cr8MEW5Uc",
+        height: 1000,
+        width: 1500,
+      },
+    },
+    {
+      thumb: "https://picsum.photos/id/674/3888/2592",
+      image: "https://picsum.photos/id/674/3888/2592",
+      metadata: {
+        name: "Maja Petric",
+        url: "https://unsplash.com/photos/vGQ49l9I4EE",
+        height: 2592,
+        width: 3888,
       },
     },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [slideDuration] = useState(3000);
+  const [fetchDuration, setFetchDuration] = useState(1000);
   const [sliding, setSliding] = useState(false);
   const [images, setImages] = useState(imageList);
   // const [transition, setTransition] = useState(true);
@@ -106,16 +162,14 @@ function App() {
 
   useEffect(() => {
     if (sliding) {
-      const interval = setInterval(() => {
-        nextClick();
-        // console.log(`Line 75) ${activeIndex}`);
-      }, slideDuration);
-      // console.log(`Line 77) ${activeIndex}`);
+      const interval = setInterval(nextClick, slideDuration);
       return () => clearInterval(interval);
     }
-    if (images.length === 0 || activeIndex === images.length - 1) {
-      fetchNewImages();
-    }
+    const interval = setInterval(fetchNewImages, fetchDuration);
+    // if (images.length === 0 || activeIndex === images.length - 1) {
+    //   fetchNewImages();
+    // }
+    return () => clearInterval(interval);
   });
 
   function fetchNewImages() {
@@ -123,6 +177,7 @@ function App() {
       .then((res) => {
         let newState = images;
         res.map((obj) =>
+          // console.log(obj) &&
           newState.push({
             thumb: obj.download_url,
             image: obj.download_url,
@@ -135,6 +190,7 @@ function App() {
           })
         );
         setImages(newState);
+        setFetchDuration(fetchDuration + randomIntFromInterval(1000, 2000));
       })
       .catch((err) => console.log(err));
   }

@@ -1,10 +1,10 @@
 import axios from "axios";
-import getRandomInt from '../utils/GetRandomInt';
+import randomIntFromInterval from '../utils/RandomInt';
 
 async function ImageService() {
   const res = await axios({
     method: "get",
-    url: `https://picsum.photos/v2/list?page=${getRandomInt(99)}&limit=${getRandomInt(10)}`,
+    url: `https://picsum.photos/v2/list?page=${randomIntFromInterval(1,99)}&limit=${randomIntFromInterval(1,10)}`,
   });
 
   return res.data;
