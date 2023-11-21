@@ -2,12 +2,6 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Slide from "./components/Slide";
 // import { useTimeoutFn } from "react-use";
-// import // image1,
-// // image2,
-// // image3,
-// // image4,
-// // image5,
-// "./assets/index";
 import Carousel from "./components/Carousel";
 import ImageService from "./components/ImageService";
 import ImageData from "./components/ImageData";

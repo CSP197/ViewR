@@ -1,11 +1,10 @@
 ![Screenshot](public/screenshot.png)
 
-ViewR is an image viewer built using React.js via Vite and Tailwind CSS via Headless UI, deployed on Github Pages!
+ViewR is an image viewer built with React and Tailwind CSS, deployed on Github Pages!
 
 #### Features:
-1. Click on Next Image to view the next image
-2. Click on Prev Image to view the previous image
+1. Click on `{Prev || Next}` Image to view that image
 3. Click on Start Slideshow to view a slideshow where the images change after 3 seconds
-4. Click on the individual images on the carousel to view as needed
+4. Click on the individual images in the carousel to view as needed
 
-##### All images are sourced from `unsplash.com`
+##### All images are sourced from `unsplash.com` using the `picsum` API
