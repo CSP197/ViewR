@@ -121,6 +121,7 @@ function App() {
   const [slideDuration] = useState(3000);
   const [fetchDuration, setFetchDuration] = useState(1000);
   const [sliding, setSliding] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [images, setImages] = useState(imageList);
   // const [transition, setTransition] = useState(true);
   // const [, , resetTransition] = useTimeoutFn(() => setTransition(true), 500);
@@ -161,6 +162,12 @@ function App() {
   };
 
   useEffect(() => {
+    if (loading) {
+      const delay = setTimeout(() => {
+        setLoading(false);
+      }, 500);
+      return () => clearTimeout(delay);
+    }
     if (sliding) {
       const interval = setInterval(nextClick, slideDuration);
       return () => clearInterval(interval);
@@ -219,6 +226,7 @@ function App() {
         keyboardFunc={handleKeyDown}
       />
       <Slide
+        loadSkeleton={loading}
         catalogImage={images[activeIndex].image}
         metadata={images[activeIndex].metadata}
         // transition={transition}

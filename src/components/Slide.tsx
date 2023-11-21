@@ -1,7 +1,9 @@
 import React from "react";
+// import Skeleton from "./Skeleton";
 // import { Transition } from "@headlessui/react";
 
 interface SlideProps {
+  loadSkeleton: boolean;
   catalogImage: any;
   metadata: {
     name: string;
@@ -16,6 +18,7 @@ interface SlideProps {
 const Slide = (props: SlideProps) => {
   return (
     <>
+      {/* <Skeleton isHidden={props.loadSkeleton} /> */}
       {/* <Transition
         as={React.Fragment}
         show={props.transition}
